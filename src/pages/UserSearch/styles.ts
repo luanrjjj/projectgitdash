@@ -1,60 +1,19 @@
 import styled,{ css } from 'styled-components';
+import theme from '../../styles/theme';
 
-import {rgb, shade} from 'polished';
+
+const { colors, fonts } = theme;
 
 // padding : 40 20
 
-export const Title = styled.h1`
-font-size:48px;
-color:#3A3A3A;
-max-width:45px;
-line-height:56px;
-margin-top:80px;
-`
 
-
-export const Form = styled.form`
-margin-top:40px;
-max-width:700px;
-display:flex;
-
-
-input {
-    flex: 1;
-    height: 70px;
-    padding: 0 24px;
-    border: 0;
-    border-radius:5px 0 0 5px;
-    color:#3a3a3a;
-    border:2px solid;
-    background-color: rgb(236,240,241);
-
-
-    &::placeholder{
-        color:#a8a8b3;
-    }
-}
-
-button {
-    width:210px;
-    height:70px;
-    background:rgb(36,41,46);
-    border-radius:0px 5px 5px 0px;
-    border:0;
-    color:#fff;
-    font-weight:blanchedalmond;
-    transition:background-color 0.2s;
-    
-    &:hover {
-        background: ${shade(0.2,rgb(36,41,46))};
-     }
-}
-`
 
 export const Users = styled.div `
-margin-top:80px;
-max-width:700px;
+margin-top:20vh;
+max-width:100%;
 
+
+/* 
  a {
      background : #E5E7E9;
      border-radius: 5px;
@@ -87,6 +46,91 @@ max-width:700px;
      flex:1;
 
  }
+ */
+
+ .logo-container {
+
+    display:flex;
+    align-items:center;
+    flex-direction:column;
+    margin-bottom:50px;
+   
+    
+ }
+
+ .logo {
+     display:flex;
+     font-size:50px;
+     color:${colors.gray100};
+
+     p {
+         color:${colors.green700}
+     }
+ }
+
+ .input-group {
+     display:flex;
+     justify-content:center;
+     align-itens:center;
+     width:100%;
+
+ }
+
+ .input-search {
+    position:relative;
+ 
+    width: 500px;
+    height: 35px;
+
+
+ }
+ input {
+    height: 2.81rem;
+    border: 1px solid ${colors.inputColor};;
+    border-radius:20px;
+    display:block;
+    padding:16px;
+    text-align:center;
+    padding-right:30px;
+    background:rgb(32,32,36);
+    transition:0.4s;
+    width:100%;
+}
+
+label {
+    padding:2px 0 0 10px;
+    color: ${colors.gray300};
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+    
+}
+
+input:focus,
+input:valid { 
+    background:${colors.gray300};
+    z-index:999;
+    box-shadow: 0 0 5px rgb(6,182,86);
+    border-color:${colors.green500}
+}
+
+input:focus ~ label,
+input:valid ~ label {
+  top: -25px;
+  font-size: 14px;
+  color: ${colors.green700};
+  font-weight:bold;
+
+
+}
+
+
  }
 
 `

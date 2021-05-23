@@ -6,14 +6,18 @@ import  theme from '../../styles/theme';
 
 const { colors, fonts } = theme;
 
-
+export const BgColor = styled.div `
+background-color:rgb(26,30,34)
+`
 
 export const Section = styled.section `
-background:rgb(26,30,34);
-background-color:rgb(26,30,34);
+
+background-color:rgb(18,18,20);
 margin-left:0;
 margin-right:0;
 width:100%;
+margin-top:50px;
+
 `
 
 export const UserInfoStyles = styled.div `
@@ -29,7 +33,7 @@ padding-top:4rem;`}
 .avatar {
     ${mixins.flexCenter}
     margin-top:1.5rem;
-    border:0.5rem solid ${colors.blue};
+    border:0.5rem solid ${colors.green300};
     border-radius:100%;
     width:150px;
     height:150px;
@@ -47,7 +51,7 @@ padding-top:4rem;`}
 h1 {
     font-size: 2.5rem;
  
-    color: ${colors.offWhite};
+    color: ${colors.green50};
     ${media.bp400`
       font-size: 2rem;
      
@@ -60,16 +64,16 @@ h1 {
     margin-top:15px;
 
     a {
-      color: ${colors.blue};
+      color: ${colors.green300};
       text-decoration:none;
     }
   }
   h3 {
-    color: ${colors.lightblue};
+    color: ${colors.green100};
    
   }
   a {
-    color: ${colors.lightestBlue};
+    color: ${colors.green100};
     &:hover,
     &:focus {
       text-decoration: underline;
@@ -78,7 +82,7 @@ h1 {
   
   .info {
     ${mixins.flexCenter};
-    color:${colors.lightblue};
+    color:${colors.green100};
     ${media.bp600`
       display: block;
       
@@ -101,7 +105,7 @@ h1 {
 
   display:grid;
   grid-template-columns:repeat(3,minmax(100px,150px));
-  grid-gap:0.5rem;
+  grid-gap:1rem;
   justify-content:center;
   margin-top:2rem;
   
@@ -119,7 +123,7 @@ h1 {
 
 };
 .num {
-        color: ${colors.offWhite};
+        color: ${colors.green50};
         font-size: 1.5rem;
         ${media.bp400`
           font-size: 1rem;
@@ -131,7 +135,7 @@ h1 {
         font-size: 0.75rem;
         letter-spacing: 1px;
         margin-top: 0.75rem;
-        color: rgba(200, 225, 255, 0.7);
+        color: ${colors.green100};
         ${media.bp400`
           font-size: 0.5rem;
         `};

@@ -1,10 +1,22 @@
 import React, {useRef,useState,useEffect} from 'react';
 import buildChart from '../../utils/buildChart';
 import langColors from '../../utils/langColors';
-import Chart, { ChartLegendOptions } from 'chart.js';
 import ChartsStyles from './styles';
-import { isNullishCoalesce } from 'typescript';
-import { Canvas} from '../Canvas';
+import  theme from '../../styles/theme';
+                   
+
+const { colors, fonts } = theme;
+
+
+const colorGreen = [
+    colors.green100,
+    colors.green200,
+    colors.green300,
+    colors.green400,
+    colors.green500,
+    colors.green600,
+    colors.green700,
+    ]         
 
 
 
@@ -26,12 +38,12 @@ const Charts = ({langData,repoData}:any)=> {
         setLangChartData(data);
 
         if ( data.length>1) {
-            const backgroundColor = langData.map(({color}:any) => `#${ color.length > 4? color.slice(1):color.slice(1).repeat(2)}B3`,
+            const backgroundColor1 = langData.map(({color}:any) => `#${ color.length > 4? color.slice(1):color.slice(1)}`,
             )                 
-                                                                                            
+            const backgroundColor = colorGreen;                                 
     
-            const borderColor = langData.map((lang:any) => `${lang.color}`);
-            console.log(11,borderColor)
+            const borderColor = colorGreen;
+                
             const chartType = 'pie';
             const axes = false;
             const legend = true;
@@ -61,11 +73,8 @@ const Charts = ({langData,repoData}:any)=> {
         setLangChartData(data);
 
         if ( data.length>1) {
-            const backgroundColor = langData.map(({color}:any) => `#${ color.length > 4? color.slice(1):color.slice(1).repeat(2)}B3`,
-            )                 
-                                                                                            
-    
-            const borderColor = langData.map((lang:any) => `${lang.color}`);
+            const backgroundColor = colorGreen
+            const borderColor = colorGreen
             const chartType = 'bar';
             const axes = true;
             const legend = false;
@@ -129,10 +138,10 @@ const Charts = ({langData,repoData}:any)=> {
     return (
         
         
-        <div>
+        <>
             {langData!=null && repoData && (
             <ChartsStyles>
-                
+                <div className="GraphsContainer">
                 <div className = "chart">
                     <header>
                         <h2>Top Languages</h2>
@@ -163,13 +172,13 @@ const Charts = ({langData,repoData}:any)=> {
                     <canvas  id="langStarChart" width={chartSize} height={chartSize}/>            
           </div>
         </div>
-
+        </div>
 
             </ChartsStyles>
        
         )
         }
-         </div>
+         </>
     )
 
 

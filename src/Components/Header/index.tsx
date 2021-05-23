@@ -1,17 +1,111 @@
-import React from 'react';
-import {NavHeader,NavLogo} from './styles';
+import React,{useState,useEffect,FormEvent} from 'react';
+import {Title,Form,InputContainer, NavHeader,NavLogo} from './styles';
 import gitLogo from '../../assets/gitLogo.png'
+import api from '../../services/api'
+import {RiSearchLine,RiNotificationLine,RiUserAddLine} from 'react-icons/ri'
+
+interface User {
+    full_name:string;
+    login:string;
+    description: string;
+    avatar_url:string;
+    owner: {
+        login:string;
+        avatar_url:string;
+    }
+}
+
+
 
 const Header:React.FC = () => {
-    return(
+
+    const [newUser,setNewUser] = useState('');
+    const [inputError,setInputError] = useState('');
+    const [ users,setUsers] = useState <User[]>(()=> {
+    const storageUsers = localStorage.getItem(`@GithubExplorer:users`)
+
+
+
+    if (storageUsers) {
+        return JSON.parse(storageUsers)
+    }
+    return [];
+
+})
+
+
+    useEffect (()=> {
+        localStorage.setItem (
+            `GithubExplorer:users`,JSON.stringify(users));
+        
+
+    },[users]);
+
+    async function handleAddUser (event:FormEvent<HTMLFormElement>):Promise<void> {
+        event.preventDefault();
+    
+        if (!newUser) {
+            setInputError('Digite o autor/nome do repositório');
+            return;
+        }
+        try {
+            const response = await api.get(`users/${newUser}`)
+            
+            const user = response.data
+
+            console.log(response.data)
+            
+            setUsers ([...users,user]);
+            setNewUser('');
+            setInputError('');
+
+        } catch(err) {
+            setInputError('Erro na busca por esse Repositório')
+        }
+        
+    
+    }
+
+
+
+
+
+ 
+
+
+
+    return (
+
     <NavHeader>
         <NavLogo>
         <a className = 'logo' href = "/">
-            <img src = {gitLogo} alt = "gitlogo"/>
+            GitDa
+           
         </a>
+
+        <p>sh.</p>
         </NavLogo>
+       
+        
+        <Form onSubmit = {handleAddUser} >
+      <InputContainer>
+        <input
+        value = {newUser}
+        onChange ={(e)=> setNewUser(e.target.value)}
+        placeholder = "Busque Usuarios e Repositórios"/>
+        <i>
+         <RiSearchLine className="iconSearch" />
+         </i>
+         </InputContainer>
+       
+    </Form>
+
+
+        
     </NavHeader>
     )
 
 }
+
+
 export default Header

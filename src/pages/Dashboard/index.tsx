@@ -1,11 +1,13 @@
 import react, {useState, useEffect } from 'react';
 import {useRouteMatch} from 'react-router-dom';
 import GhPolyglot from 'gh-polyglot';
-import {Section,UserInfoStyles,Graphs} from './styles';
+import {Section,UserInfoStyles,Graphs,BgColor} from './styles';
 import Charts from '../../Components/Charts';
 import {FiCalendar } from 'react-icons/fi';
 import { GoLocation } from 'react-icons/go';
 import Repos from '../../Components/Repos'
+import React from 'react';
+import Header from '../../Components/Header/index'
 
 
 interface UserParams  {
@@ -32,6 +34,7 @@ const UserData:React.FC= ()  => {
     
     const[langData,setLangData] = useState(null);
     const[repoData,setRepoData] = useState(null);
+
     const [error,setError] = useState({active:false,type:200})
 
     const userGeneral = useRouteMatch<UserParams>()
@@ -71,6 +74,7 @@ const getLangData = () => {
       }
      
       setLangData(stats);
+      console.log(15000,stats)
       
     }); 
     
@@ -96,6 +100,7 @@ const getLangData = () => {
         setError({ active: true, type: 200 });
         console.error('Error:', error);
       });
+      console.log(3000,repoData)
   };
 
   useEffect(()=> {
@@ -109,8 +114,10 @@ const getLangData = () => {
   return (
     
     <>
+    <Header/>
    {userData && (
      <>
+     <BgColor>
      <Section>
             <UserInfoStyles>
                 {userData.avatar_url && (
@@ -178,14 +185,14 @@ const getLangData = () => {
         </div>
       
         </Graphs>
-        <Repos/>
+        <Repos repoData={repoData}/>
 
-      
+        </BgColor>
             </>
             
         )
                 }
-
+               
 
  </>
   )

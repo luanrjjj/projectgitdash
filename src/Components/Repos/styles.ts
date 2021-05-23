@@ -6,6 +6,7 @@ import { isJsxElement, JsxEmit } from 'typescript';
 import { HTMLAttributes } from 'react';
 const {colors, fonts} = theme;
 
+
 interface IpropStyled   {
  
   active:boolean;
@@ -43,7 +44,9 @@ export const Section = styled.section`
     display: flex;
     align-items: center;
     margin-bottom: 2rem;
+
     h2 {
+      color:#FFF;
       display: inline-block;
       margin: 0;
       font-size: 1.75rem;
@@ -73,119 +76,203 @@ export const ReposStyles  = styled.div`
     display:flex;
     align-itens:center;
     font-size: 1rem;
-    color: ${colors.grey};
+    color: ${colors.white};
+    margin-left:10px;
 
-
-    .label { 
-        margin: 0 1rem;
+    span {
+      margin-top:1rem;
+      color:${colors.gray500}
     }
 }
 
-.repo-list {
-    u1 {
-        display:grid;
-        grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
-        grid-gap : 1rem;
-    }
-
-    
-}
-`
-
-export const DropdownStyles = styled.div<{active:boolean}>`
-position: relative;
-width:100px;
-font-size:14px;
-font-weight:500;
-
-
-.dropdown_button {
-  ${mixins.flexBetween};
-  align-items:center;
-  width:100%;
-  font-size:14px;
-  font-weight:500;
-  line-height:1;
-  text-align: left;
-  color: ${colors.blue};
-  background-color: transparent;
-  border: 1px solid rgba (0,118,255,0.1);
-  padding:10px 7px;
-  border-radius: 5px;
-
-  &:hover,
-  &:focus {
-    color: ${colors.blue};
-    background: rgba (0,118,255,0.1);
-    border-color: rgba(0,118,255,0.1)
-  }
+.RepoCards {
   
-  svg {
-    margin-left: 0.5rem;
-  }
+ 
+    display: grid;
+     
+    grid-template-columns: repeat(3, 1fr);
+     
+    grid-auto-rows: auto;
+     
+    grid-gap: 1rem;
 
-  label {
-    transition: ${theme.transition};
-    cursor:pointer;
-  }
-}
-
-.dropdown_list {
-  position:absolute;
-  overflow: hidden;
-  width:100%;
-  z-index:2;
-  transition:${theme.transition};
-  box-shadow: 0 5px 30px -15px rgba (0,0,0,0.2);
-  opacity:0;
-  visibility:hidden;
-  background-color: ${colors.offWhite}
-}
-
-.dropdown_list-item {
-  border-radius:0;
-  transition: ${theme.transition};
-  &:hover,&:focus {
-    background-color: ${colors.lightestBlue};
-  }
-
-  &:first-of-type {
-    button {
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px;
-    }
-  }
-  &:last-of-type {
-    button {
-      border-bottom-left-radius: 5px;
-      border-bottom-right-radius: 5px;
-    }
+    list-style-type:none;
+     
     
 }
+.RepoCard { 
+  background:rgb(32,32,36);
+  margin:0 0 20px;
+  padding:20px;
+  border-radius:2px;
+  box-shadow: 0 2px 4px rgba(#000,0.2);
+  cursor:pointer;
+  transition:0.3s ease;
+  border-radius:20px;
+  position:relative;  
 
-button {
-  color: ${colors.blue};
-  background: rgba(0,118,255,0.1);
-  padding:10px 7px;
-  width: 100%;
-  font-size:14px;
-  font-weight:500;
-  line-height:1;
-  text-align:left;
-}
-${props =>
-  props.active &&
-  css`
-    .dropdown_list {
-      opacity: 1;
-      visibility: visible;
-    }
-    .dropdown_button {
-      background: rgba(0, 118, 255, 0.1);
-      svg {
-        transform: rotate(0.5turn);
+  transition:filter 0.2s;
+
+    &:hover {
+    top:-2px;
+    z-index:999;
+    box-shadow: 0 0 5px rgb(6,182,86);
+    border-color:${colors.green500}
+
+      filter: brightness(0.8);
+
+      h1, p,div,span {
+        color:${colors.green100}
       }
     }
-  `}
+   
 
+
+
+  .CardIcon{
+    position:absolute;
+    color:${colors.gray200};
+    margin-top:5px;
+    
+  }
+
+  h1 {
+    margin-left:20px;
+    color:${colors.gray200};
+    font-weight:bold;
+ 
+  }
+  
+}
+
+
+p {
+  color:${colors.gray500};
+  font-size:0.875rem;
+  margin-bottom:1.875rem;
+
+}
+
+.CardDetails {
+  padding:0.625rem 0rem 1.25rem 1.25rem;
+  margin-top:1.875rem;
+ 
+  position:absolute;;
+  bottom:0;
+  justify-content:space-between;
+  right:0;
+  left:0;
+
+span {
+color:${colors.gray300};
+margin-left:5px;
+}
+
+span:last-child {
+  position:absolute;
+  right:0;
+  margin-right:1.875rem;
+  margin-top:4px;
+}
+
+.CardIconStar  {
+  margin-top:0.3125rem;
+  margin-left:0.625rem;
+  color:${colors.gray200};
+}
+
+.CardIconFork  {
+  margin-left:0.625rem;
+  color:${colors.gray200};
+}
+
+
+}
+
+`
+
+export const DropdownStyles = styled.div `
+
+.dropdown_list {
+  position:relative;
+  display:inline-block
+
+
+}
+
+.btn-list{ 
+  border:none;
+  background-color:${colors.gray700};
+  cursor:pointer;
+  font-weight:bold;
+  color:${colors.green300}
+
+
+}
+
+
+
+.dropdown_list-item {
+  display: none;
+  position: absolute;
+  background-color: ${colors.gray700};
+  min-width: 160px;
+  padding: 12px 16px;
+  z-index: 1;
+
+  
+  a {
+    
+  
+  transition:filter 0.2s;
+
+  &:hover {
+    filter: brightness(0.8);
+    font-color:${colors.green500};
+    z-index-999;
+    
+
+  }
+  
+}
+
+
+}
+.btn-sorted {
+  margin-left:10px;
+  
+    background-color: ${colors.green500};
+    border-radius:10px;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+
+    transition:filter 0.2s;
+
+    &:hover {
+      filter: brightness(0.8);
+    }
+   
+  }
+
+}
+
+ a {
+  color: ${colors.green100};
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown_list a:hover {
+  background-color:${colors.gray700};
+ 
+}
+
+.dropdown_list:hover .dropdown_list-item {
+  display: block;
+ 
+}
 `

@@ -1,5 +1,5 @@
 import {createGlobalStyle} from 'styled-components';
-
+import gray800 from './theme'
 import githubBackground from '../assets/githubBackground.svg'
 
 export default createGlobalStyle `
@@ -11,8 +11,7 @@ export default createGlobalStyle `
 }
 
 body {
-    background:#FFF url(${githubBackground}) no-repeat 70% top;
-    -webkit-font-smoothing: antialiased;
+  background-color: #1A202C;
 }
 
 body,input,button { 
