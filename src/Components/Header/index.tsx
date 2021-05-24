@@ -53,7 +53,7 @@ const Header:React.FC = () => {
             
             const user = response.data
 
-            console.log(response.data)
+            
             
             setUsers ([...users,user]);
             setNewUser('');
@@ -85,9 +85,11 @@ const Header:React.FC = () => {
 
         <p>sh.</p>
         </NavLogo>
-       
+
+
         
         <Form onSubmit = {handleAddUser} >
+            
       <InputContainer>
         <input
         value = {newUser}

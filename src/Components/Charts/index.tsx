@@ -21,8 +21,8 @@ const colorGreen = [
 
 
 const Charts = ({langData,repoData}:any)=> {
-    console.log(3,repoData);
-    console.log(500,langData)
+    console.log('repoData:',repoData);
+    console.log('langData:',langData)
     
 
     //   Gráfico dos Linguagens Utilizadas  //
@@ -64,7 +64,6 @@ const Charts = ({langData,repoData}:any)=> {
         const LIMIT = 5;
         const sortProperty = 'stargazers_count';
         const mostStarredRepos = repoData.filter((repo: { fork: any; })=>!repo.fork).sort((a: { [x: string]: number; },b: { [x: string]: number; })=> b[sortProperty] - a[sortProperty]).slice(0,LIMIT);
-        console.log(100,mostStarredRepos)
         const labels = mostStarredRepos.map((repo:any)=> repo.name);
         const data = mostStarredRepos.map((repo:any) => repo[sortProperty]);        
         console.log(200,data)                                                
@@ -89,11 +88,14 @@ const Charts = ({langData,repoData}:any)=> {
     const [LangStarred,setLangStarred] = useState(null)
 
                    //   Linguagens mais curtidas nos repositórios  //
+
+
     const initLangStarred = () => {
         const ctx = document.getElementById ("langStarChart");
         const LIMIT = 5;
         const sortProperty = 'stargazers_count';
         const filteredRepos = repoData.filter((repo: { fork: any; stargazers_count: number; }) => !repo.fork && repo.stargazers_count>0 )
+        console.log(5000,filteredRepos)
         const uniqueLangs = new Set (filteredRepos.map((repo: { language: any; })=>repo.language))
         const labels = Array.from(uniqueLangs.values()).filter(l => l);
         const data = labels.map(lang => {
@@ -111,9 +113,9 @@ const Charts = ({langData,repoData}:any)=> {
       const axes = false;
       const legend = true;
       const borderColor= (labels).map((label) => langColors.label);
-      const backgroundColor = borderColor.map(color => `${color}B3`);
+      const backgroundColor = colorGreen;
       const config = { ctx, chartType, labels, data, backgroundColor, borderColor, axes, legend };
-      console.log(config)
+     
       buildChart(config);
           
             
@@ -126,6 +128,7 @@ const Charts = ({langData,repoData}:any)=> {
         if (langData && repoData) {     
           initLangChart();
           initmostStarred();
+          initLangStarred();
    
        
         }

@@ -72,7 +72,6 @@ const chart :Chart =  new Chart(ctx, {
     legend: buildLegend(legend),
   },
 });
-console.log(chart)
 
   
 };

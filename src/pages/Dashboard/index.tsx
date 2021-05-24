@@ -74,7 +74,7 @@ const getLangData = () => {
       }
      
       setLangData(stats);
-      console.log(15000,stats)
+    
       
     }); 
     
@@ -91,7 +91,7 @@ const getLangData = () => {
         if (response.status === 403) {
           return setError({ active: true, type: 403 });
         }
-        console.log(50,response)
+      
         return response.json();
         
       })
@@ -100,7 +100,7 @@ const getLangData = () => {
         setError({ active: true, type: 200 });
         console.error('Error:', error);
       });
-      console.log(3000,repoData)
+      
   };
 
   useEffect(()=> {

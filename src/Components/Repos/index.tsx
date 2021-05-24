@@ -27,7 +27,7 @@ const Repos = ({ repoData }: any) => {
     const sorted = repoData.filter((repo: { fork: any; }) =>
       !repo.fork).sort((a: { [x: string]: number; }, b:
         { [x: string]: number; }) => b[typed] - a[typed]).slice(0, LIMIT);
-    console.log(555555555555, sorted)
+    
 
 
 
@@ -47,7 +47,7 @@ const Repos = ({ repoData }: any) => {
     setSortType(sortType);
     toggleDropdown();
   }
-  console.log(100000, topRepos)
+ 
 
 
 
