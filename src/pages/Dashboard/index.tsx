@@ -1,13 +1,14 @@
 import react, {useState, useEffect } from 'react';
 import {useRouteMatch} from 'react-router-dom';
 import GhPolyglot from 'gh-polyglot';
-import {Section,UserInfoStyles,Graphs,BgColor} from './styles';
+import {Section,UserInfoStyles,Graphs,BgColor, Calendar} from './styles';
 import Charts from '../../Components/Charts';
 import {FiCalendar } from 'react-icons/fi';
 import { GoLocation } from 'react-icons/go';
 import Repos from '../../Components/Repos'
 import React from 'react';
 import Header from '../../Components/Header/index'
+import GitHubCalendar from 'react-github-calendar';
 
 
 interface UserParams  {
@@ -185,6 +186,9 @@ const getLangData = () => {
         </div>
       
         </Graphs>
+        <Calendar>
+        <GitHubCalendar year={2021} blockMargin={8} username="luanrjjj" />
+        </Calendar>
         <Repos repoData={repoData}/>
 
         </BgColor>

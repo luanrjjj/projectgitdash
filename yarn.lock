@@ -4329,6 +4329,11 @@ data-urls@^2.0.0:
     whatwg-mimetype "^2.3.0"
     whatwg-url "^8.0.0"
 
+date-fns@^2.23.0:
+  version "2.23.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.23.0.tgz#4e886c941659af0cf7b30fafdd1eaa37e88788a9"
+  integrity sha512-5ycpauovVyAk0kXNZz6ZoB9AYMZB4DObse7P3BPWmyEjXNORTI8EJ6X0uaSAq4sCHzM1uajzrkr6HnsLQpxGXA==
+
 date-unit-ms@^1.1.0:
   version "1.1.14"
   resolved "https://registry.yarnpkg.com/date-unit-ms/-/date-unit-ms-1.1.14.tgz#82dc972bbe03a65c0c73b0c7b42075ce6b510de9"
@@ -9942,6 +9947,14 @@ raw-body@2.4.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
+react-activity-calendar@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/react-activity-calendar/-/react-activity-calendar-1.3.2.tgz#56c0c77359627aee8f595cf0232d97bbd71b1f7a"
+  integrity sha512-fKl1DwZd1+IXKuEUCJWhCm75OqTz6FuFWGm1DKdskxHtC3/ReK+XxqYM+pQM6Rv34KRcukbcBMD9tuq+rIv4dw==
+  dependencies:
+    date-fns "^2.23.0"
+    tinycolor2 "^1.4.0"
+
 react-app-polyfill@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/react-app-polyfill/-/react-app-polyfill-2.0.0.tgz#a0bea50f078b8a082970a9d853dc34b6dcc6a3cf"
@@ -9997,6 +10010,15 @@ react-error-overlay@^6.0.9:
   version "6.0.9"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.9.tgz#3c743010c9359608c375ecd6bc76f35d93995b0a"
   integrity sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew==
+
+react-github-calendar@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/react-github-calendar/-/react-github-calendar-3.0.1.tgz#afc20dc685675c7a283a0299cb549515ef52389d"
+  integrity sha512-drlSL3TOEXcod9msXcRiyPFF8FSewIuCppoSizOGtXzQN8XQIFMok16Vzr4elL0xql5QSnU62eHIfHoEIDX7cA==
+  dependencies:
+    date-fns "^2.23.0"
+    react-activity-calendar "^1.3.2"
+    tinycolor2 "^1.4.0"
 
 react-icons@^4.2.0:
   version "4.2.0"
@@ -11634,6 +11656,11 @@ tiny-warning@^1.0.0, tiny-warning@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/tiny-warning/-/tiny-warning-1.0.3.tgz#94a30db453df4c643d0fd566060d60a875d84754"
   integrity sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==
+
+tinycolor2@^1.4.0:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/tinycolor2/-/tinycolor2-1.4.2.tgz#3f6a4d1071ad07676d7fa472e1fac40a719d8803"
+  integrity sha512-vJhccZPs965sV/L2sU4oRQVAos0pQXwsvTLkWYdqJ+a8Q5kPFzJTuOFwy7UniPli44NKQGAglksjvOcpo95aZA==
 
 tinyreq@^2.0.0:
   version "2.3.1"

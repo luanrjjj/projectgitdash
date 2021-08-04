@@ -148,3 +148,12 @@ export const UserRepo = styled.div `
 export const Graphs = styled.div `
 
 `
+export const Calendar = styled.div `
+margin-left:6rem;
+padding:2rem;
+justify-content:center;
+align-itens:center;
+color:${colors.white};
+background-color:${colors.darkGrey};
+
+`
