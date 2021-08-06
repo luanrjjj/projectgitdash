@@ -87,20 +87,8 @@ const Header:React.FC = () => {
         </NavLogo>
 
 
-        
-        <Form onSubmit = {handleAddUser} >
-            
-      <InputContainer>
-        <input
-        value = {newUser}
-        onChange ={(e)=> setNewUser(e.target.value)}
-        placeholder = "Busque Usuarios e Repositórios"/>
-        <i>
-         <RiSearchLine className="iconSearch" />
-         </i>
-         </InputContainer>
-       
-    </Form>
+     
+     
 
 
         

@@ -107,21 +107,36 @@ label {
     
 }
 
-input:focus { 
+.focusInput { 
     background:${colors.gray300};
     z-index:999;
     box-shadow: 0 0 5px rgb(6,182,86);
     border-color:${colors.green500}
 }
 
-input:focus ~ label {
+.focusInput ~ label {
   top: -25px;
   font-size: 14px;
   color: ${colors.green700};
   font-weight:bold;
+}
 
+input:focus {
+    background:${colors.gray300};
+    z-index:999;
+    box-shadow: 0 0 5px rgb(6,182,86);
+    border-color:${colors.green500}
 
 }
+
+input:focus ~label {
+top: -25px;
+  font-size: 14px;
+  color: ${colors.green700};
+  font-weight:bold;
+
+}
+
 
 .user-searched {
     display:flex;

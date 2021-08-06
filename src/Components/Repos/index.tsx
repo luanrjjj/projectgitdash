@@ -3,6 +3,7 @@ import { DropdownStyles, ReposStyles, Section } from './styles';
 
 import { RiGitRepositoryLine,RiStarSLine } from 'react-icons/ri'
 import {BiGitRepoForked} from 'react-icons/bi'
+import {Link} from "react-router-dom";
 
 const Repos = ({ repoData }: any) => {
 
@@ -49,7 +50,7 @@ const Repos = ({ repoData }: any) => {
   }
  
 
-
+console.log('topRepos',topRepos)
 
   return (
 
@@ -83,9 +84,11 @@ const Repos = ({ repoData }: any) => {
 
           <div className="RepoList">
             <ul className="RepoCards">
-              {topRepos && topRepos.map(repo =>
 
+              {topRepos && topRepos.map(repo =>
+              
                 <li className="RepoCard" key={repo.name}>
+                  <Link to={{pathname:`${repo.html_url}`}} target="_blank">
                   <div className="CardTitle">
                     <RiGitRepositoryLine className= "CardIcon"/>
                     <h1 className="RepoName">{repo?.name}</h1>
@@ -100,6 +103,7 @@ const Repos = ({ repoData }: any) => {
                    <span>{repo.forks_count}</span>
                    <span>{repo.size} KB</span>
                   </div>
+                  </Link>
                 </li>
 
               )}

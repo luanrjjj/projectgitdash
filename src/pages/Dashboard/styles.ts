@@ -16,7 +16,7 @@ background-color:rgb(18,18,20);
 margin-left:0;
 margin-right:0;
 width:100%;
-margin-top:50px;
+
 
 `
 
@@ -149,11 +149,17 @@ export const Graphs = styled.div `
 
 `
 export const Calendar = styled.div `
-margin-left:6rem;
-padding:2rem;
+margin-right:50px !important;
+margin-left:80px;
+padding:2rem; 
 justify-content:center;
 align-itens:center;
 color:${colors.white};
 background-color:${colors.darkGrey};
+border-radius:20px;
+width:90%;
+position:relative;
+
+
 
 `

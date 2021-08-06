@@ -5,7 +5,7 @@ import {rgb, shade} from 'polished';
 const { colors, fonts } = theme;
 
 export const NavHeader  = styled.div `
-position:absolute;
+
 z-index:999;
 top:0;
 left:0;
@@ -14,11 +14,12 @@ height:50px;
 background:rgb(26,30,34);
 display:flex;
 
+
 `
 
 export const NavLogo = styled.div`
 
-background-color:#1A202C;
+background-color:transparent;
 align-items:center;
 display:flex;
 margin-right: 5px;
@@ -28,7 +29,7 @@ justify-content:center;
     text-decoration:inherit;
     color:#EDF2F7;
     font-weight:bold;
-    margin-left:10px;
+    margin-left:0.625rem;
     font-size:30px;
 }
 

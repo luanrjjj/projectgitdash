@@ -9,6 +9,7 @@ import Repos from '../../Components/Repos'
 import React from 'react';
 import Header from '../../Components/Header/index'
 import GitHubCalendar from 'react-github-calendar';
+import ReactTooltip from 'react-tooltip';
 
 
 interface UserParams  {
@@ -35,6 +36,8 @@ const UserData:React.FC= ()  => {
     
     const[langData,setLangData] = useState(null);
     const[repoData,setRepoData] = useState(null);
+    const [spinner,setSpinner] = useState(true);
+    
 
     const [error,setError] = useState({active:false,type:200})
 
@@ -110,10 +113,14 @@ const getLangData = () => {
     getUserData();
   },[])
 
+useEffect(()=> {
+  setTimeout(()=>setSpinner(false),1000)
 
+
+},[])
   
   return (
-    
+    !spinner && (
     <>
     <Header/>
    {userData && (
@@ -187,7 +194,9 @@ const getLangData = () => {
       
         </Graphs>
         <Calendar>
-        <GitHubCalendar year={2021} blockMargin={8} username="luanrjjj" />
+        <GitHubCalendar year={2021} blockMargin={13} username="luanrjjj">
+        <ReactTooltip html />
+        </GitHubCalendar>
         </Calendar>
         <Repos repoData={repoData}/>
 
@@ -200,7 +209,7 @@ const getLangData = () => {
 
  </>
   )
-
+  )
 };
 export default UserData
 

@@ -1,7 +1,3 @@
-
-import Header from '../../Components/Header/index'
-
-
 import { Link } from 'react-router-dom';
 
 import { FiChevronRight } from 'react-icons/fi'
@@ -10,6 +6,7 @@ import { Users } from './styles';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import api from '../../services/api';
+import {useToasts} from 'react-toast-notifications'
 
 
 interface User {
@@ -24,6 +21,7 @@ interface User {
 }
 
 const UserSearch: React.FC = () => {
+    const { addToast } = useToasts();
 
     const [newUser, setNewUser] = useState('');
     const [inputError, setInputError] = useState('');
@@ -74,7 +72,8 @@ const UserSearch: React.FC = () => {
             setInputError('');
 
         } catch (err) {
-            setInputError('Erro na busca por esse Repositório')
+            addToast('User not found', { appearance: 'error' });
+            setInputError('Repository not found')
         }
 
 
@@ -106,7 +105,7 @@ const UserSearch: React.FC = () => {
                     <div className="input-search">
                         <input
                             value={newUser}
-                            onChange={(e) => setNewUser(e.target.value)} />
+                            onChange={(e) => setNewUser(e.target.value)} className = {newUser?'focusInput':''}/>
                         <span className="highlight"></span>
                         <label>Search the User</label>
                     </div>

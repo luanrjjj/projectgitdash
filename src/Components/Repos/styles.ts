@@ -97,7 +97,10 @@ export const ReposStyles  = styled.div`
     grid-gap: 1rem;
 
     list-style-type:none;
-     
+    
+    @media (max-width:900px) {
+      grid-template-columns:auto
+        }
     
 }
 .RepoCard { 

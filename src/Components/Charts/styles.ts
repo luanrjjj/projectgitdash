@@ -6,7 +6,7 @@ const { colors } = theme;
 
 const ChartsStyles = styled.div`
 .GraphsContainer {
-  margin-left:120px;
+  margin-left:80px;
   max-width: 1200px !important;
   margin-top: 2rem !important;
   display: grid;
@@ -14,10 +14,10 @@ const ChartsStyles = styled.div`
   grid-gap: 2rem;
   justify-content: center;
   padding:20px;
-  ${media.bp900`
-    justify-items: center;
-  `};
-
+  
+  @media (max-width:900px) {
+    grid-template-columns:auto
+      }
 
   .chart {
     background-color: rgb(32,32,36);
