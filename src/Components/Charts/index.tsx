@@ -3,6 +3,7 @@ import buildChart from '../../utils/buildChart';
 import langColors from '../../utils/langColors';
 import ChartsStyles from './styles';
 import  theme from '../../styles/theme';
+import { isLabeledStatement } from 'typescript';
                    
 
 const { colors, fonts } = theme;
@@ -21,8 +22,7 @@ const colorGreen = [
 
 
 const Charts = ({langData,repoData}:any)=> {
-    console.log('repoData:',repoData);
-    console.log('langData:',langData)
+   
     
 
     //   Gráfico dos Linguagens Utilizadas  //
@@ -66,7 +66,7 @@ const Charts = ({langData,repoData}:any)=> {
         const mostStarredRepos = repoData.filter((repo: { fork: any; })=>!repo.fork).sort((a: { [x: string]: number; },b: { [x: string]: number; })=> b[sortProperty] - a[sortProperty]).slice(0,LIMIT);
         const labels = mostStarredRepos.map((repo:any)=> repo.name);
         const data = mostStarredRepos.map((repo:any) => repo[sortProperty]);        
-        console.log(200,data)                                                
+                                                    
        
         
         setLangChartData(data);
@@ -95,9 +95,11 @@ const Charts = ({langData,repoData}:any)=> {
         const LIMIT = 5;
         const sortProperty = 'stargazers_count';
         const filteredRepos = repoData.filter((repo: { fork: any; stargazers_count: number; }) => !repo.fork && repo.stargazers_count>0 )
-        console.log(5000,filteredRepos)
+        
         const uniqueLangs = new Set (filteredRepos.map((repo: { language: any; })=>repo.language))
+        
         const labels = Array.from(uniqueLangs.values()).filter(l => l);
+        console.log('label',labels)
         const data = labels.map(lang => {
           const repos = filteredRepos.filter((repo: { language: unknown; }) => repo.language === lang);
           const starsArr = repos.map((r: { stargazers_count: any; }) => r.stargazers_count);
@@ -108,15 +110,19 @@ const Charts = ({langData,repoData}:any)=> {
         
         setLangStarred(data);
 
-        if ( data.length>1) {
+        
+
+        if ( data.length>0) {
+            
+
             const chartType = 'doughnut';
-      const axes = false;
-      const legend = true;
-      const borderColor= (labels).map((label) => langColors.label);
-      const backgroundColor = colorGreen;
-      const config = { ctx, chartType, labels, data, backgroundColor, borderColor, axes, legend };
-     
-      buildChart(config);
+            const axes = false;
+            const legend = true;
+            const borderColor= (labels).map((label) => langColors.label);
+            const backgroundColor = colorGreen;
+            const config = { ctx, chartType, labels, data, backgroundColor, borderColor, axes, legend };
+            
+            buildChart(config);
           
             
         }

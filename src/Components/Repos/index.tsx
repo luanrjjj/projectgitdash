@@ -88,7 +88,7 @@ console.log('topRepos',topRepos)
               {topRepos && topRepos.map(repo =>
               
                 <li className="RepoCard" key={repo.name}>
-                  <Link to={{pathname:`${repo.html_url}`}} target="_blank">
+                  <Link to={{pathname:`${repo.html_url}`}} target="_blank" style={{textDecoration: 'none'}}>
                   <div className="CardTitle">
                     <RiGitRepositoryLine className= "CardIcon"/>
                     <h1 className="RepoName">{repo?.name}</h1>

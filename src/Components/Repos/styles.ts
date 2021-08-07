@@ -104,6 +104,7 @@ export const ReposStyles  = styled.div`
     
 }
 .RepoCard { 
+
   background:rgb(32,32,36);
   margin:0 0 20px;
   padding:20px;
@@ -143,6 +144,8 @@ export const ReposStyles  = styled.div`
     margin-left:20px;
     color:${colors.gray200};
     font-weight:bold;
+    text-decoration:none;
+
  
   }
   

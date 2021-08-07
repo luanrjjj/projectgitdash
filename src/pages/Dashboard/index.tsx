@@ -194,7 +194,7 @@ useEffect(()=> {
       
         </Graphs>
         <Calendar>
-        <GitHubCalendar year={2021} blockMargin={13} username="luanrjjj">
+        <GitHubCalendar year={2021} blockMargin={13} username={username}>
         <ReactTooltip html />
         </GitHubCalendar>
         </Calendar>
