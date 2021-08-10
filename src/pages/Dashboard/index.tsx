@@ -1,15 +1,21 @@
 import react, {useState, useEffect } from 'react';
 import {useRouteMatch} from 'react-router-dom';
 import GhPolyglot from 'gh-polyglot';
-import {Section,UserInfoStyles,Graphs,BgColor, Calendar} from './styles';
+import {Section,UserInfoStyles,Graphs,BgColor, Calendar,Animation} from './styles';
 import Charts from '../../Components/Charts';
 import {FiCalendar } from 'react-icons/fi';
 import { GoLocation } from 'react-icons/go';
 import Repos from '../../Components/Repos'
 import React from 'react';
 import Header from '../../Components/Header/index'
+
 import GitHubCalendar from 'react-github-calendar';
 import ReactTooltip from 'react-tooltip';
+
+import Lottie from "react-lottie";
+import animationGit from '../../assets/githubGreenAnimation.json';
+
+
 
 
 interface UserParams  {
@@ -37,6 +43,8 @@ const UserData:React.FC= ()  => {
     const[langData,setLangData] = useState(null);
     const[repoData,setRepoData] = useState(null);
     const [spinner,setSpinner] = useState(true);
+    const [loading,setLoading] = useState(false);
+    const [completed,setCompleted] = useState(false);
     
 
     const [error,setError] = useState({active:false,type:200})
@@ -44,45 +52,56 @@ const UserData:React.FC= ()  => {
     const userGeneral = useRouteMatch<UserParams>()
     const username = userGeneral.params.user
     
+    const defaultOptions1 = {
+      loop: true,
+      autoplay: true,
+      animationData: animationGit,
+      rendererSettings: {
+        preserveAspectRatio: "xMidYMid slice",
+      },
+    };
 
-const getUserData = () => {
-    
-    fetch(`https://api.github.com/users/${username}`)
-    .then(response => {
-        if (response.status === 404) {
-            return setError ({active: true, type:404})
-        }
-        if(response.status===403) {
-            return setError({active:true,type:403});
-        }
-       
-        return response.json();
+
+  
+
+    const getUserData = () => {
+        
+        fetch(`https://api.github.com/users/${username}`)
+        .then(response => {
+            if (response.status === 404) {
+                return setError ({active: true, type:404})
+            }
+            if(response.status===403) {
+                return setError({active:true,type:403});
+            }
+          
+            return response.json();
         
 
 
-    }).then(json => setUserData(json))
-    .catch(error=> {
-        setError({active:true,type:400});
-        console.error ('Error:',error);
-    })
-};
+            }).then(json => setUserData(json))
+            .catch(error=> {
+                setError({active:true,type:400});
+                console.error ('Error:',error);
+            })
+        };
 
 
-const getLangData = () => {
-    const me = new GhPolyglot(`${username}`);
-    
-    me.userStats((err: Error, stats: react.SetStateAction<null>) => {
-      if (err) {
-        console.error('Error:', err);
-        setError({ active: true, type: 400 });
-      }
-     
-      setLangData(stats);
-    
-      
-    }); 
-    
-  };
+      const getLangData = () => {
+          const me = new GhPolyglot(`${username}`);
+          
+          me.userStats((err: Error, stats: react.SetStateAction<null>) => {
+            if (err) {
+              console.error('Error:', err);
+              setError({ active: true, type: 400 });
+            }
+          
+            setLangData(stats);
+          
+            
+          }); 
+          
+        };
 
   
 
@@ -108,19 +127,31 @@ const getLangData = () => {
   };
 
   useEffect(()=> {
+    setTimeout(()=> {
     getRepoData();
     getLangData();
     getUserData();
+  
+    setTimeout( () => {
+      setCompleted(true);
+    }, 1500);
+  },1500)
   },[])
 
-useEffect(()=> {
-  setTimeout(()=>setSpinner(false),1000)
 
-
-},[])
   
   return (
-    !spinner && (
+    !completed? (
+        <>
+         <Header/>
+         <div className="space"></div>
+        <Animation>
+        <div className="animation">
+        <Lottie options={defaultOptions1} height={300} width={300} />       
+        </div>
+        </Animation>
+        </>
+        ):(
     <>
     <Header/>
    {userData && (
@@ -194,7 +225,7 @@ useEffect(()=> {
       
         </Graphs>
         <Calendar>
-        <GitHubCalendar year={2021} blockMargin={13} username={username}>
+        <GitHubCalendar  fontSize={14} year={new Date().getFullYear()} blockMargin={13} username={username}>
         <ReactTooltip html />
         </GitHubCalendar>
         </Calendar>
@@ -210,6 +241,7 @@ useEffect(()=> {
  </>
   )
   )
+  
 };
 export default UserData
 

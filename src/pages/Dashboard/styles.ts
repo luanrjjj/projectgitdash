@@ -149,8 +149,8 @@ export const Graphs = styled.div `
 
 `
 export const Calendar = styled.div `
-margin-right:50px !important;
-margin-left:80px;
+margin-right:60px !important;
+left:5%;
 padding:2rem; 
 justify-content:center;
 align-itens:center;
@@ -160,6 +160,25 @@ border-radius:20px;
 width:90%;
 position:relative;
 
+
+
+
+
+
+`
+export const Animation = styled.div `
+
+background-color:${colors.green700} !important;
+height:92vh;
+width:100%;
+
+.animation {
+  position:fixed;
+  transform: translate(-50%, -50%);
+  left:50%;
+  top:50%;
+  
+}
 
 
 `

@@ -97,6 +97,10 @@ export const ReposStyles  = styled.div`
     grid-gap: 1rem;
 
     list-style-type:none;
+
+    @media (max-width:1250px) {
+      grid-template-columns: repeat(2,1fr);
+    }
     
     @media (max-width:900px) {
       grid-template-columns:auto

@@ -6,7 +6,7 @@ const { colors } = theme;
 
 const ChartsStyles = styled.div`
 .GraphsContainer {
-  margin-left:80px;
+  margin-left:50px;
   max-width: 1200px !important;
   margin-top: 2rem !important;
   display: grid;
@@ -17,6 +17,8 @@ const ChartsStyles = styled.div`
   
   @media (max-width:900px) {
     grid-template-columns:auto
+    
+    transform: translate(-10%)
       }
 
   .chart {
