@@ -157,8 +157,14 @@ top: -25px;
         border-radius:20px;
 
         .user-informations { 
+            position:absolute;
             margin-left:70%;
             color:${colors.green700};
+
+           > strong {
+                text-overflow: ellipsis;
+                max-width: 1px;
+            }
         }
        
 
@@ -181,6 +187,13 @@ img {
     border-radius:50%;
     padding:3px;
     
+}
+
+.iconArrow {
+    flex-shrink:0;
+    position:absolute;
+    margin-left:100%;
+    color:${colors.orange}
 }
 }
 

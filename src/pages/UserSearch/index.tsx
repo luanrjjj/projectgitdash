@@ -116,7 +116,7 @@ const UserSearch: React.FC = () => {
                                 <strong>{user.login}</strong>
                                 <p>{user.description}</p>
                             </div>
-                            <FiChevronRight size={20} />
+                            <FiChevronRight className="iconArrow" size={20} />
                         </Link>
 
 
