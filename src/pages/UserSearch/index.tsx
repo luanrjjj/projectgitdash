@@ -58,14 +58,14 @@ const UserSearch: React.FC = () => {
             const user = response.data
             let i
             console.log(user)
-            console.log(users)
+            console.log('users',users)
             
 
             const checkUser = users.filter(eachUser => eachUser.login === user.login)
             console.log(100,checkUser.length)
 
             if (checkUser.length==0) {
-                setUsers([...users, user]);
+                setUsers([user]);
             }
 
             setNewUser('');
@@ -78,12 +78,6 @@ const UserSearch: React.FC = () => {
 
 
     }
-
-
-
-
-
-
 
 
 

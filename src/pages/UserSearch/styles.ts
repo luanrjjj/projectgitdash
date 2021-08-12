@@ -66,7 +66,7 @@ max-width:100%;
  .input-group {
      display:flex;
      justify-content:center;
-     align-itens:center;
+     align-items:center;
      width:100%;
 
  }

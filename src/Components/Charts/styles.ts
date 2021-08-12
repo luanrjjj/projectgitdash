@@ -16,9 +16,11 @@ const ChartsStyles = styled.div`
   padding:20px;
   
   @media (max-width:900px) {
-    grid-template-columns:auto
+    grid-template-columns:auto;
     
-    transform: translate(-10%)
+    transform:translate(-10%);
+    margin-left:90px;
+    
       }
 
   .chart {

@@ -153,7 +153,7 @@ margin-right:60px !important;
 left:5%;
 padding:2rem; 
 justify-content:center;
-align-itens:center;
+align-items:center;
 color:${colors.white};
 background-color:${colors.darkGrey};
 border-radius:20px;
