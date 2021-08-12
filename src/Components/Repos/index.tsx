@@ -8,7 +8,7 @@ import {Link} from "react-router-dom";
 const Repos = ({ repoData }: any) => {
 
   const [topRepos, setTopRepos] = useState([]);
-  const [sortType, setSortType] = useState('stargazers_count');
+  const [sortType, setSortType] = useState('stars');
   const [dropdownOpen, setDropdownOpen] = useState(false)
 
   const map = {
@@ -18,16 +18,31 @@ const Repos = ({ repoData }: any) => {
   };
 
 
-  const sortTypes = ['stargazers_count', 'forks_count', 'size']
+  const sortTypes = ['stars', 'forks', 'size']
+  
 
 
   type typed = "stars" | "forks" | "size"
 
   const getTopRepos = (typed: string) => {
+    let typedFilter:string;
+    switch(typed) {
+      case 'stars':
+        typedFilter='stargazers_count';
+        break;
+      case 'forks':
+        typedFilter='forks_count';
+        break;
+      case typed='size':
+        typedFilter='size';
+        break;
+      
+
+    }
     const LIMIT = 8;
     const sorted = repoData.filter((repo: { fork: any; }) =>
       !repo.fork).sort((a: { [x: string]: number; }, b:
-        { [x: string]: number; }) => b[typed] - a[typed]).slice(0, LIMIT);
+        { [x: string]: number; }) => b[typedFilter] - a[typedFilter]).slice(0, LIMIT);
     
 
 
