@@ -134,8 +134,8 @@ const UserData:React.FC= ()  => {
   
     setTimeout( () => {
       setCompleted(true);
-    }, 1500);
-  },1500)
+    }, 2500);
+  },2500)
   },[])
 
 
@@ -224,11 +224,6 @@ const UserData:React.FC= ()  => {
         </div>
       
         </Graphs>
-        <Calendar>
-        <GitHubCalendar  fontSize={14} year={new Date().getFullYear()} blockMargin={13} username={username}>
-        <ReactTooltip html />
-        </GitHubCalendar>
-        </Calendar>
         <Repos repoData={repoData}/>
 
         </BgColor>
