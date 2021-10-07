@@ -1,5 +1,5 @@
 
-#Informações do Projeto
+##Informações do Projeto
 
 O objetivo desse projeto foi utilizar o React para manipulação de dados de uma API externa, criação de gráficos e composição de um Dashboard. 
 
